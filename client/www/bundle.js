@@ -3872,6 +3872,8 @@ var App = function (_React$Component) {
             })
           );
         }
+      } else {
+        return _react2.default.createElement('span', null);
       }
     }
   }]);
