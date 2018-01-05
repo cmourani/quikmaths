@@ -113,7 +113,7 @@ class App extends React.Component {
             this.setState({
               mounted: true
             })
-           }
+           } 
          })
   }
 
@@ -378,7 +378,6 @@ class App extends React.Component {
     return (<span></span>)
   }
   }
-}
 }
 
 ReactDOM.render(<App />, document.getElementById('mount'));
