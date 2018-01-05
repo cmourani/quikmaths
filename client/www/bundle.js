@@ -3526,7 +3526,8 @@ var App = function (_React$Component) {
       isLoggedIn: false,
       // render game or chooseyourpath conditionally
       choosePathMode: true,
-      isSignedUp: true
+      isSignedUp: true,
+      mounted: false
 
     };
     _this.AppStyle = {
@@ -3589,7 +3590,8 @@ var App = function (_React$Component) {
         if (result.data !== false) {
           _this2.setState({
             isLoggedIn: true,
-            username: result.data.user
+            username: result.data.user,
+            mounted: true
           });
         }
       });
@@ -3810,64 +3812,66 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      if (this.state.isLoggedIn === false && this.state.isSignedUp === true) {
-        return _react2.default.createElement(_login2.default, { handleLogin: this.handleLogin, goToSignUp: this.goToSignUp });
-      } else if (this.state.isLoggedIn === false && this.state.isSignedUp === false) {
-        return _react2.default.createElement(_signUp2.default, { handleSignUp: this.handleSignUp, goToLogin: this.goToLogin });
-      } else {
-        return _react2.default.createElement(
-          'div',
-          { style: this.AppStyle },
-          _react2.default.createElement(
-            'button',
-            { onClick: this.logout },
-            'Logout'
-          ),
-          _react2.default.createElement(_navTopBar2.default, {
-            getUserInfo: this.getUserInfo,
-            getLeaderBoard: this.getLeaderBoard,
-            username: this.state.username,
-            createdAt: this.state.createdAt,
-            gamesPlayed: this.state.gamesPlayed,
-            totalCorrect: this.state.totalCorrect,
-            totalIncorrect: this.state.totalIncorrect,
-            highScore: this.state.highScore,
-            bestTime: this.state.bestTime,
-            recordsList: this.state.recordsList
-          }),
-          _react2.default.createElement(_navSideBar2.default, {
-            style: this.NavSideBarStyle,
-            inProgressBool: this.state.inProgressBool,
-            startNewGame: this.startNewGame,
-            inProgressBoolUpdate: this.inProgressBoolUpdate,
-            problemTypeUpdate: this.problemTypeUpdate,
-            questionsLeftUpdate: this.questionsLeftUpdate,
-            choosePathMode: this.state.choosePathMode
-          }),
-          _react2.default.createElement(_game2.default, {
-            style: this.GameStyle,
-            problemType: this.state.problemType,
-            timeElapsed: this.state.timeElapsed,
-            numberCorrect: this.state.numberCorrect,
-            numberIncorrect: this.state.numberIncorrect,
-            questionsLeft: this.state.questionsLeft,
-            inProgressBool: this.state.inProgressBool,
-            correctArray: this.state.correctArray,
-            incorrectArray: this.state.incorrectArray,
-            userId: this.state.userId,
-            username: this.state.username,
-            numberCorrectUpdate: this.numberCorrectUpdate,
-            numberIncorrectUpdate: this.numberIncorrectUpdate,
-            resetCounts: this.resetCounts,
-            questionsLeftUpdate: this.questionsLeftUpdate,
-            inProgressBoolUpdate: this.inProgressBoolUpdate,
-            correctArrayUpdate: this.correctArrayUpdate,
-            incorrectArrayUpdate: this.incorrectArrayUpdate,
-            choosePathMode: this.state.choosePathMode,
-            showChoosePathMode: this.showChoosePathMode,
-            startNewGame: this.startNewGame
-          })
-        );
+      if (this.state.mounted) {
+        if (this.state.isLoggedIn === false && this.state.isSignedUp === true) {
+          return _react2.default.createElement(_login2.default, { handleLogin: this.handleLogin, goToSignUp: this.goToSignUp });
+        } else if (this.state.isLoggedIn === false && this.state.isSignedUp === false) {
+          return _react2.default.createElement(_signUp2.default, { handleSignUp: this.handleSignUp, goToLogin: this.goToLogin });
+        } else {
+          return _react2.default.createElement(
+            'div',
+            { style: this.AppStyle },
+            _react2.default.createElement(
+              'button',
+              { onClick: this.logout },
+              'Logout'
+            ),
+            _react2.default.createElement(_navTopBar2.default, {
+              getUserInfo: this.getUserInfo,
+              getLeaderBoard: this.getLeaderBoard,
+              username: this.state.username,
+              createdAt: this.state.createdAt,
+              gamesPlayed: this.state.gamesPlayed,
+              totalCorrect: this.state.totalCorrect,
+              totalIncorrect: this.state.totalIncorrect,
+              highScore: this.state.highScore,
+              bestTime: this.state.bestTime,
+              recordsList: this.state.recordsList
+            }),
+            _react2.default.createElement(_navSideBar2.default, {
+              style: this.NavSideBarStyle,
+              inProgressBool: this.state.inProgressBool,
+              startNewGame: this.startNewGame,
+              inProgressBoolUpdate: this.inProgressBoolUpdate,
+              problemTypeUpdate: this.problemTypeUpdate,
+              questionsLeftUpdate: this.questionsLeftUpdate,
+              choosePathMode: this.state.choosePathMode
+            }),
+            _react2.default.createElement(_game2.default, {
+              style: this.GameStyle,
+              problemType: this.state.problemType,
+              timeElapsed: this.state.timeElapsed,
+              numberCorrect: this.state.numberCorrect,
+              numberIncorrect: this.state.numberIncorrect,
+              questionsLeft: this.state.questionsLeft,
+              inProgressBool: this.state.inProgressBool,
+              correctArray: this.state.correctArray,
+              incorrectArray: this.state.incorrectArray,
+              userId: this.state.userId,
+              username: this.state.username,
+              numberCorrectUpdate: this.numberCorrectUpdate,
+              numberIncorrectUpdate: this.numberIncorrectUpdate,
+              resetCounts: this.resetCounts,
+              questionsLeftUpdate: this.questionsLeftUpdate,
+              inProgressBoolUpdate: this.inProgressBoolUpdate,
+              correctArrayUpdate: this.correctArrayUpdate,
+              incorrectArrayUpdate: this.incorrectArrayUpdate,
+              choosePathMode: this.state.choosePathMode,
+              showChoosePathMode: this.showChoosePathMode,
+              startNewGame: this.startNewGame
+            })
+          );
+        }
       }
     }
   }]);
@@ -22303,16 +22307,12 @@ var QuestionAnswer = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (QuestionAnswer.__proto__ || Object.getPrototypeOf(QuestionAnswer)).call(this, props));
 
-		_this.state = {
-			class: ".button"
-		};
 		_this.findCorrect = _this.findCorrect.bind(_this);
-		_this.addClass = _this.addClass.bind(_this);
 		return _this;
 	}
 
 	_createClass(QuestionAnswer, [{
-		key: "findCorrect",
+		key: 'findCorrect',
 		value: function findCorrect(answer, question) {
 			var _this2 = this;
 
@@ -22336,53 +22336,35 @@ var QuestionAnswer = function (_React$Component) {
 			});
 		}
 	}, {
-		key: "addClass",
-		value: function addClass(targ) {
+		key: 'render',
+		value: function render() {
 			var _this3 = this;
 
-			console.log(targ);
-			this.setState({
-				class: ".clicked"
-			}, function () {
-				setTimeout(function () {
-					_this3.setState({
-						class: ".button"
-					});
-				}, 500);
-			});
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var _this4 = this;
-
 			return _react2.default.createElement(
-				"div",
+				'div',
 				null,
 				_react2.default.createElement(
-					"div",
+					'div',
 					null,
 					this.props.questionString
 				),
 				_react2.default.createElement(
-					"div",
+					'div',
 					null,
 					this.props.answers.map(function (answer, id) {
 						return _react2.default.createElement(Answer, {
-							question: _this4.props.questionString,
+							question: _this3.props.questionString,
 							answer: answer,
 							key: id,
-							findCorrect: _this4.findCorrect,
-							addClass: _this4.addClass,
-							"class": _this4.state.class
+							findCorrect: _this3.findCorrect
 						});
 					})
 				),
 				_react2.default.createElement(Timer, { timeElapsed: this.props.timeElapsed }),
 				_react2.default.createElement(
-					"div",
+					'div',
 					null,
-					"Questions Left: ",
+					'Questions Left: ',
 					this.props.questionsLeft
 				)
 			);
@@ -22394,9 +22376,9 @@ var QuestionAnswer = function (_React$Component) {
 
 var Answer = function Answer(props) {
 	return _react2.default.createElement(
-		"button",
-		{ className: props.class, onClick: function onClick(e) {
-				props.findCorrect(props.answer, props.question);props.addClass(e.target);
+		'button',
+		{ style: { cursor: pointer }, onClick: function onClick() {
+				props.findCorrect(props.answer, props.question);
 			} },
 		props.answer
 	);
@@ -22404,9 +22386,9 @@ var Answer = function Answer(props) {
 
 var Timer = function Timer(props) {
 	return _react2.default.createElement(
-		"span",
+		'span',
 		null,
-		"Time Elapsed: ",
+		'Time Elapsed: ',
 		props.timeElapsed / 100
 	);
 };

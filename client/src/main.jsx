@@ -38,7 +38,8 @@ class App extends React.Component {
       isLoggedIn: false,
       // render game or chooseyourpath conditionally
       choosePathMode: true,
-      isSignedUp: true
+      isSignedUp: true, 
+      mounted: false
 
     }
     this.AppStyle = {
@@ -96,7 +97,8 @@ class App extends React.Component {
            if (result.data !== false){
             this.setState({
               isLoggedIn: true, 
-              username: result.data.user
+              username: result.data.user, 
+              mounted: true
             })
            }
          })
@@ -285,6 +287,7 @@ class App extends React.Component {
 
 
   render() {
+    if (this.state.mounted){
     if (this.state.isLoggedIn === false && this.state.isSignedUp === true) {
       return (
         <Login handleLogin={this.handleLogin} goToSignUp={this.goToSignUp}/>
@@ -344,6 +347,7 @@ class App extends React.Component {
           </div>
        )
     }
+  }
   }
 }
 
