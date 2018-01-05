@@ -35,12 +35,13 @@ class QuestionAnswer extends React.Component {
 		console.log(targ)
 		this.setState({
 			class: ".clicked"
-		}.then(() => 
+		}, () => 
+		{
 			setTimeout(() => {
 				this.setState({
 					class: ".button"
 				})
-			}, 500)))
+			}, 500)})
 	}
 
 
