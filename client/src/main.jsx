@@ -100,6 +100,10 @@ class App extends React.Component {
               username: result.data.user, 
               mounted: true
             })
+           } else {
+            this.setState({
+              mounted: true
+            })
            }
          })
   }

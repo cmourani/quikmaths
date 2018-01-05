@@ -3593,6 +3593,10 @@ var App = function (_React$Component) {
             username: result.data.user,
             mounted: true
           });
+        } else {
+          _this2.setState({
+            mounted: true
+          });
         }
       });
     }
