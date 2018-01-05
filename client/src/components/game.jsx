@@ -32,34 +32,34 @@ class Game extends React.Component {
   }
 
 
-  determineNewScore (time, correctAnswers, incorrectAnswers) {
-    let answerRatio = correctAnswers / incorrectAnswers
-    let preTotal = answerRatio -= time
-    let timePenalty = 3 * incorrectAnswers
-    var totalScore
+   determineNewScore (time, correctAnswers, incorrectAnswers) {
 
-    if (time <= 200 && time > 150) {
-      correctAnswers = correctAnswers - timePenalty
-    } else if (time <= 150 && time > 100) {
-      correctAnswers = correctAnswers * 3 - timePenalty
-    } else if (time <= 100 && time > 60) {
-      correctAnswers = correctAnswers * 8 - timePenalty
-    } else if (time <= 60 && time > 30) {
-      correctAnswers = correctAnswers * 10 
-    } else if (time <= 30 && correctAnswers !== 20) {
-      correctAnswers = correctAnswers * 12
-    } else if (correctAnswers === 20) {
-      let totalScore = 300000
-      if (time > 30) {
-        totalScore = totalScore - time
-      }
+    let answerPoints = correctAnswers * 1800
+    let totalScore = answerPoints
+  
+    if (time < 10) {
+      totalScore += 2000
+    } else if (time > 10 && time < 20) {
+      totalScore += 1800
+    } else if (time >= 20 && time < 30) {
+      totalScore += 1600
+    } else if (time >= 30 && time < 40) {
+      totalScore += 1400
+    } else if (time >= 40 && time < 50) {
+      totalScore += 1200
+    } else if (time >= 50 && time < 60) {
+      totalScore += 1000
+    } else if (time >= 60 && time < 70) {
+      totalScore += 800
+    } else if (time >= 70 && time < 80) {
+      totalScore += 600
+    } else if ( time >= 80 && time < 90) {
+      totalScore += 400
+    } else if ( time >= 90) {
+      totalScore += 200
     }
     
-    var totalScore = Math.floor((preTotal + correctAnswers + 30) * 100)
-    if (totalScore >= 300000) {
-      totalScore = 300000
-    }
-    return totalScore < 0 ? 0 : totalScore;
+    return totalScore
   }
 //create a function that sends new post request to server
 //check all fields that are required
