@@ -22332,6 +22332,11 @@ var QuestionAnswer = function (_React$Component) {
 			});
 		}
 	}, {
+		key: 'addClass',
+		value: function addClass(targ) {
+			console.log(targ);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this3 = this;
@@ -22352,7 +22357,8 @@ var QuestionAnswer = function (_React$Component) {
 							question: _this3.props.questionString,
 							answer: answer,
 							key: id,
-							findCorrect: _this3.findCorrect
+							findCorrect: _this3.findCorrect,
+							adClass: _this3.addClass
 						});
 					})
 				),
@@ -22373,8 +22379,8 @@ var QuestionAnswer = function (_React$Component) {
 var Answer = function Answer(props) {
 	return _react2.default.createElement(
 		'button',
-		{ style: { cursor: 'pointer' }, onClick: function onClick() {
-				props.findCorrect(props.answer, props.question);
+		{ style: { cursor: 'pointer' }, onClick: function onClick(e) {
+				props.findCorrect(props.answer, props.question);props.addClass(e.target);
 			} },
 		props.answer
 	);

@@ -7,7 +7,7 @@ class QuestionAnswer extends React.Component {
 	}
 
 	findCorrect(answer, question){
-		this.props.questionsLeftUpdate((questionsLeft)=> {
+		this.props.questionsLeftUpdate((questionsLeft) => {
 			if (answer === this.props.correctAnswer){
 				this.props.correctArrayUpdate(question)
 				this.props.numberCorrectUpdate()
@@ -17,7 +17,7 @@ class QuestionAnswer extends React.Component {
 			}
 			console.log(questionsLeft)
 			if (questionsLeft === 0){
-				this.props.finalTimeUpdate(()=> {
+				this.props.finalTimeUpdate(() => {
 					this.props.saveNewScore()
 				})
 				this.props.inProgressBoolUpdate()
@@ -26,6 +26,12 @@ class QuestionAnswer extends React.Component {
 			}
 		})
 	}
+
+	addClass(targ){
+		console.log(targ)
+	}
+
+
 
 	render(){
 		return(
@@ -37,6 +43,7 @@ class QuestionAnswer extends React.Component {
 						answer={answer} 
 						key={id} 
 						findCorrect={this.findCorrect}
+						adClass={this.addClass}
 					/>)}
 				</div>
 				<Timer timeElapsed={this.props.timeElapsed} />
@@ -47,8 +54,8 @@ class QuestionAnswer extends React.Component {
 }
 
 const Answer = (props) => (
-	<button style={{cursor:'pointer'}} onClick={() => {
-		props.findCorrect(props.answer, props.question)
+	<button style={{cursor:'pointer'}} onClick={(e) => {
+		props.findCorrect(props.answer, props.question); props.addClass(e.target)
 	}}>{props.answer}</button>
 )
 
