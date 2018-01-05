@@ -22343,13 +22343,13 @@ var QuestionAnswer = function (_React$Component) {
 			console.log(targ);
 			this.setState({
 				class: ".clicked"
-			}.then(function () {
-				return setTimeout(function () {
+			}, function () {
+				setTimeout(function () {
 					_this3.setState({
 						class: ".button"
 					});
 				}, 500);
-			}));
+			});
 		}
 	}, {
 		key: "render",
