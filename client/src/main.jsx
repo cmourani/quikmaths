@@ -44,16 +44,10 @@ class App extends React.Component {
       isLoggedIn: false,
       // render game or chooseyourpath conditionally
       choosePathMode: true,
-<<<<<<< HEAD
       isSignedUp: true,
       totalUserCorrect: null,
       totalUserIncorrect: null,
       mounted: false
-=======
-      isSignedUp: true, 
-      mounted: false
-
->>>>>>> heroku
     }
     this.AppStyle = {
       fontFamily: 'Poppins',
@@ -110,7 +104,6 @@ class App extends React.Component {
            if (result.data !== false){
             this.setState({
               isLoggedIn: true, 
-<<<<<<< HEAD
               username: result.data.user,
               mounted: true
             }, () => {
@@ -118,9 +111,6 @@ class App extends React.Component {
             })
            } else {
             this.setState({
-=======
-              username: result.data.user, 
->>>>>>> heroku
               mounted: true
             })
            }
