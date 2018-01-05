@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "compile": "webpack --watch"
+    "start": "nodemon server.js",
+    "compile": "webpack --watch",
+    "production" : {
+      "use_env_variable": "mysql2://b03e5e18f3e601:b92c6c39@us-cdbr-iron-east-05.cleardb.net/"}
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
