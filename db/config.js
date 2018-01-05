@@ -41,3 +41,4 @@ const CLEARDB_DATABASE_URL = 'mysql://b03e5e18f3e601:b92c6c39@us-cdbr-iron-east-
 sequelize.authenticate().catch(err => console.log(err))
 module.exports.sequelize = sequelize;
 module.exports.Sequelize = Sequelize;
+module.exports.url = CLEARDB_DATABASE_URL
