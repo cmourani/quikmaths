@@ -41,4 +41,4 @@ const Sequelize = require('sequelize');
 sequelize.authenticate().catch(err => console.log(err))
 module.exports.sequelize = sequelize;
 module.exports.Sequelize = Sequelize;
-module.exports.url = CLEARDB_DATABASE_URL
+
