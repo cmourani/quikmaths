@@ -133,6 +133,8 @@ app.post('/newRecord', (req, res) => {
 }
 */
 app.post('/userRecords', (req, res) => {
+
+  console.log('hi', req.body)
   const username = req.body.username;
   const ascending = req.body.ascending;
   const operator = req.body.operator
