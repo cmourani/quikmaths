@@ -6,6 +6,7 @@ const bodyparser = require('body-parser');
 const db = require('./db/helpers.js');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const url = require('./db/config.js').url
 
 
 
@@ -179,5 +180,5 @@ app.post('/allRecords', (req, res) => {
   });
 })
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.url || 8080;
 app.listen(PORT, () => console.log(`Server listening on Port ${PORT}`));
