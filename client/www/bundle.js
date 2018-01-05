@@ -22303,12 +22303,16 @@ var QuestionAnswer = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (QuestionAnswer.__proto__ || Object.getPrototypeOf(QuestionAnswer)).call(this, props));
 
+		_this.state = {
+			class: ".button"
+		};
 		_this.findCorrect = _this.findCorrect.bind(_this);
+		_this.addClass = _this.addClass.bind(_this);
 		return _this;
 	}
 
 	_createClass(QuestionAnswer, [{
-		key: 'findCorrect',
+		key: "findCorrect",
 		value: function findCorrect(answer, question) {
 			var _this2 = this;
 
@@ -22332,41 +22336,53 @@ var QuestionAnswer = function (_React$Component) {
 			});
 		}
 	}, {
-		key: 'addClass',
+		key: "addClass",
 		value: function addClass(targ) {
-			console.log(targ);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
 			var _this3 = this;
 
+			console.log(targ);
+			this.setState({
+				class: ".clicked"
+			}.then(function () {
+				return setTimeout(function () {
+					_this3.setState({
+						class: ".button"
+					});
+				}, 500);
+			}));
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			var _this4 = this;
+
 			return _react2.default.createElement(
-				'div',
+				"div",
 				null,
 				_react2.default.createElement(
-					'div',
+					"div",
 					null,
 					this.props.questionString
 				),
 				_react2.default.createElement(
-					'div',
+					"div",
 					null,
 					this.props.answers.map(function (answer, id) {
 						return _react2.default.createElement(Answer, {
-							question: _this3.props.questionString,
+							question: _this4.props.questionString,
 							answer: answer,
 							key: id,
-							findCorrect: _this3.findCorrect,
-							adClass: _this3.addClass
+							findCorrect: _this4.findCorrect,
+							addClass: _this4.addClass,
+							"class": _this4.state.class
 						});
 					})
 				),
 				_react2.default.createElement(Timer, { timeElapsed: this.props.timeElapsed }),
 				_react2.default.createElement(
-					'div',
+					"div",
 					null,
-					'Questions Left: ',
+					"Questions Left: ",
 					this.props.questionsLeft
 				)
 			);
@@ -22378,8 +22394,8 @@ var QuestionAnswer = function (_React$Component) {
 
 var Answer = function Answer(props) {
 	return _react2.default.createElement(
-		'button',
-		{ style: { cursor: 'pointer' }, onClick: function onClick(e) {
+		"button",
+		{ className: props.class, onClick: function onClick(e) {
 				props.findCorrect(props.answer, props.question);props.addClass(e.target);
 			} },
 		props.answer
@@ -22388,9 +22404,9 @@ var Answer = function Answer(props) {
 
 var Timer = function Timer(props) {
 	return _react2.default.createElement(
-		'span',
+		"span",
 		null,
-		'Time Elapsed: ',
+		"Time Elapsed: ",
 		props.timeElapsed / 100
 	);
 };
