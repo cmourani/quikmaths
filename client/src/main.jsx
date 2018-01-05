@@ -92,7 +92,7 @@ class App extends React.Component {
   newQuestion() {
     let infoObject = questionGen(this.state.problemType, 3, 1);
     this.setState({
-      questionString: `${infoObject.question[1]} ${infoObject.question[0]} ${infoObject.question[2]}`.includes('--') ? infoObject.question[1] + ' + ' + infoObject.question[2].substring(1) : `${infoObject.question[1]} ${infoObject.question[0]} ${infoObject.question[2]}`,
+      questionString: `${infoObject.question[1]} ${infoObject.question[0]} ${infoObject.question[2]}`,
       answers: _.shuffle(infoObject.choices),
       correctAnswer: infoObject.correctAnswer
     })
