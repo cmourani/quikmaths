@@ -22510,7 +22510,7 @@ var QuestionAnswer = function (_React$Component) {
 var Answer = function Answer(props) {
 	return _react2.default.createElement(
 		'button',
-		{ style: { cursor: pointer }, onClick: function onClick() {
+		{ style: { cursor: 'pointer' }, onClick: function onClick() {
 				props.findCorrect(props.answer, props.question);
 			} },
 		props.answer

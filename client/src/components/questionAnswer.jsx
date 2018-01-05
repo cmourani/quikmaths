@@ -47,7 +47,7 @@ class QuestionAnswer extends React.Component {
 }
 
 const Answer = (props) => (
-	<button style={{cursor: pointer}} onClick={() => {
+	<button style={{cursor: 'pointer'}} onClick={() => {
 		props.findCorrect(props.answer, props.question)}}>{props.answer}</button>
 )
 
