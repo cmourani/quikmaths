@@ -3,11 +3,7 @@ import React from 'react'
 class QuestionAnswer extends React.Component {
 	constructor(props){
 		super(props)
-		this.state = {
-			class: ".button"
-		}
 		this.findCorrect = this.findCorrect.bind(this)
-		this.addClass = this.addClass.bind(this)
 	}
 
 	findCorrect(answer, question){
@@ -31,20 +27,6 @@ class QuestionAnswer extends React.Component {
 		})
 	}
 
-	addClass(targ){
-		console.log(targ)
-		this.setState({
-			class: ".clicked"
-		}, () => 
-		{
-			setTimeout(() => {
-				this.setState({
-					class: ".button"
-				})
-			}, 500)})
-	}
-
-
 	render(){
 		return(
 			<div>
@@ -55,8 +37,6 @@ class QuestionAnswer extends React.Component {
 						answer={answer} 
 						key={id} 
 						findCorrect={this.findCorrect}
-						addClass={this.addClass}
-						class={this.state.class}
 					/>)}
 				</div>
 				<Timer timeElapsed={this.props.timeElapsed} />
@@ -67,9 +47,8 @@ class QuestionAnswer extends React.Component {
 }
 
 const Answer = (props) => (
-	<button className={props.class} onClick={(e) => {
-		props.findCorrect(props.answer, props.question); props.addClass(e.target)
-	}}>{props.answer}</button>
+	<button style={{cursor: pointer}} onClick={() => {
+		props.findCorrect(props.answer, props.question)}}>{props.answer}</button>
 )
 
 const Timer = (props) => (
